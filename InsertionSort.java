@@ -20,7 +20,7 @@ public class InsertionSort{
                     }
                     
                 }
-                else if (array[unsortedIndex] > array[i]){
+                else if (temp > array[i]){
                     array[i+1] = temp;
                     break;
                 }
