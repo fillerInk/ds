@@ -13,6 +13,14 @@ public class Main{
         myTree.insert(22);
         myTree.insert(32);
 
+        myTree.traverseInOrder();
+
+        System.out.println(myTree.get(25));
+
+        System.out.println(myTree.min());
+
+        System.out.println(myTree.max());
+
     }
 }
 
@@ -24,6 +32,25 @@ public class TreeNode{
 
     public TreeNode(int data) {
       this.data = data;
+    }
+
+    public TreeNode get(int value){
+
+        if(data == value)
+            return this;
+
+        if(value<data){
+            if(leftNode!=null){
+               return leftNode.get(value); 
+            }   
+        }
+        else{
+            if(rightNode != null){
+            return rightNode.get(value); 
+            }
+        } 
+
+        return null;
     }
 
     public void insert(int value){
@@ -42,6 +69,30 @@ public class TreeNode{
                 rightNode.insert(value);
         }
 
+    }
+
+    public void traverseInOrder(){
+        if(leftNode != null){
+            leftNode.traverseInOrder();
+        }
+        System.out.print(data+" ");
+        if(rightNode != null){
+            rightNode.traverseInOrder();
+        }
+    }
+
+    public int min(){
+        if(leftNode == null)
+            return data;
+        else
+            return leftNode.min();    
+    }
+
+    public int max(){
+        if(rightNode ==null)
+            return data;
+        else    
+            return rightNode.max();    
     }
 
     public TreeNode(int data, TreeNode leftNode, TreeNode rightNode) {
@@ -90,5 +141,31 @@ public class Tree {
         else
             root.insert(value);
     }
+
+    public void traverseInOrder(){
+        if(root != null){
+            root.traverseInOrder();
+        }
+    }
+
+    public TreeNode get(int value){
+        if(root!=null)
+           return root.get(value);
+
+        return null;   
+    }
+
+    public int min(){
+        if(root!=null)
+            return root.min();
+        return 0;    
+    }
+
+    public int max(){
+        if(root!=null)
+            return root.max();
+        return 0;    
+    }
+
 }
 
